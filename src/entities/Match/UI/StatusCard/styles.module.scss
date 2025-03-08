@@ -1,0 +1,23 @@
+.statusCard {
+  width: 92px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 4px;
+  line-height: 100%;
+  font-weight: 600;
+
+  &.ongoing {
+    background: var(--color-positive-5);
+  }
+
+  &.scheduled {
+    background: var(--color-warning-5);
+  }
+
+  &.finished {
+    background: var(--color-accent-5);
+  }
+}

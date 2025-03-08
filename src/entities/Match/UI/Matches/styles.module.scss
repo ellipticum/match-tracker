@@ -1,0 +1,38 @@
+.matches {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.matchesHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.interactive {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 100%;
+  color: var(--color-secondary-10)
+}
