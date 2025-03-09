@@ -7,17 +7,25 @@
 
 .matchesHeader {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   gap: 30px;
+
+  @media (min-width: 1080px) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .interactive {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
+
+  @media (min-width: 1080px) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .list {
