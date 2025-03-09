@@ -4,7 +4,7 @@ export const fetchMatches = async (withSleep: boolean = false) => {
     try {
         const { data } = await axiosInstance.get('/fronttemp')
 
-        if (withSleep && Math.random() > 0.5) {
+        if (withSleep && Math.random() > 0.75) {
             throw new Error('Zzzzz (The server is sleeping)')
         }
 
