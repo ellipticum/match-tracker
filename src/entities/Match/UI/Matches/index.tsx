@@ -10,6 +10,7 @@ import { useMatches } from '@/app/providers/MatchesProvider'
 import { set } from 'immutable'
 import MatchesNotification from '@/entities/Match/UI/MatchesNotification'
 import Logo from '@/shared/UI/Logo'
+import Container from '@/shared/UI/Container'
 
 interface Props {
     initialHasErrors: boolean
@@ -31,24 +32,26 @@ const Matches = ({ initialMatches, initialHasErrors }: Props) => {
     const array = matches.length === 0 ? initialMatches : matches
 
     return (
-        <div className={styles.matches}>
-            <div className={styles.matchesHeader}>
-                <Logo />
-                <div className={styles.interactive}>
-                    <MatchesNotification isHidden={!hasErrors} />
-                    <MatchesRefreshButton />
+        <Container>
+            <div className={styles.matches}>
+                <div className={styles.matchesHeader}>
+                    <Logo />
+                    <div className={styles.interactive}>
+                        <MatchesNotification isHidden={!hasErrors} />
+                        <MatchesRefreshButton />
+                    </div>
+                </div>
+                <div className={styles.list}>
+                    {array.length > 0 ? (
+                        array.map((item, index) => {
+                            return <MatchItem key={index} data={item} />
+                        })
+                    ) : (
+                        <div className={styles.notFound}>Ничего не найдено!</div>
+                    )}
                 </div>
             </div>
-            <div className={styles.list}>
-                {array.length > 0 ? (
-                    array.map((item, index) => {
-                        return <MatchItem key={index} data={item} />
-                    })
-                ) : (
-                    <div className={styles.notFound}>Ничего не найдено!</div>
-                )}
-            </div>
-        </div>
+        </Container>
     )
 }
 
