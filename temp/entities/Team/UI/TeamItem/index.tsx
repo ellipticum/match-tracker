@@ -1,0 +1,20 @@
+import React from 'react'
+import { ITeam } from '../../model/interfaces/team'
+import styles from './styles.module.scss'
+import classNames from 'classnames'
+import { Icons } from '../../../../shared/UI/Icons'
+
+interface Props extends ITeam {
+    isReversed?: boolean
+}
+
+const TeamItem = ({ isReversed = false, ...data }: Props) => {
+    return (
+        <div className={classNames(styles.teamItem, { [styles.reversed]: isReversed })}>
+            <Icons.Team />
+            <span className={styles.teamName}>{data.name}</span>
+        </div>
+    )
+}
+
+export default TeamItem
