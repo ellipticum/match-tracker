@@ -51,6 +51,14 @@
   transform: translateY(10px);
   animation: optionAppear 400ms ease forwards;
 
+  &.selected {
+    background: var(--color-primary-15);
+  }
+
+  &.default {
+    background: var(--color-primary-10);
+  }
+
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
       animation-delay: #{$i * 50}ms;

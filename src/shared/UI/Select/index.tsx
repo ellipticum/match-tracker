@@ -76,7 +76,7 @@ const Select = ({
             onKeyDown={onKeyDown}
         >
             <div
-                className={classNames(styles.option, styles.selected)}
+                className={classNames(styles.option, styles.default)}
                 onClick={() => !disabled && setIsHidden((prev) => !prev)}
             >
                 <span>{selectedOption.name}</span>
