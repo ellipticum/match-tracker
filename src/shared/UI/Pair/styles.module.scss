@@ -1,0 +1,27 @@
+.pair {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & .name {
+    color: var(--color-secondary-15-transparent-40);
+    font-size: 12px;
+    line-height: 150%;
+    font-weight: 500;
+
+    @media (min-width: 576px) {
+      font-size: 14px;
+    }
+  }
+
+  & .value {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 150%;
+    min-width: 24px;
+
+    @media (min-width: 576px) {
+      font-size: 16px;
+    }
+  }
+}

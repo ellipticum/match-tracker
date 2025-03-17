@@ -6,38 +6,52 @@ import TeamItem from '@/entities/Team/UI/TeamItem'
 import StatusCard from '@/entities/Match/UI/StatusCard'
 import { useMatches } from '@/app/providers/MatchesProvider'
 import classNames from 'classnames'
+import TeamCard from '@/entities/Team/UI/TeamCard'
 
-interface Props {
-    data: IMatch
-}
+interface Props extends IMatch {}
 
-const MatchItem = ({ data }: Props) => {
-    const { title, homeTeam, status, awayTeam, homeScore, awayScore } = data
-
+const MatchItem = ({ title, homeTeam, status, awayTeam, homeScore, awayScore }: Props) => {
     const { selectedMatchTitle, setSelectedMatchTitle } = useMatches()
 
     return (
         <div className={styles.matchItem}>
-            <div className={styles.wrapper}>
-                <TeamItem data={homeTeam} />
+            <div className={styles.matchWrapper}>
                 <div className={styles.content}>
-                    <div className={styles.score}>
-                        <span>
-                            {homeScore} : {awayScore}
-                        </span>
+                    <TeamItem {...homeTeam} />
+                    <div className={styles.info}>
+                        <div className={styles.score}>
+                            <span>
+                                {homeScore} : {awayScore}
+                            </span>
+                        </div>
+                        <StatusCard status={status} />
                     </div>
-                    <StatusCard status={status} />
+                    <TeamItem isReversed {...awayTeam} />
                 </div>
-                <TeamItem isReversed data={awayTeam} />
+                <button
+                    className={classNames(styles.expandButton, {
+                        [styles.rotated]: selectedMatchTitle === title
+                    })}
+                    onClick={() =>
+                        setSelectedMatchTitle((prevState) => (prevState === title ? null : title))
+                    }
+                >
+                    <Icons.Expand />
+                </button>
             </div>
-            <button
-                className={classNames(styles.expandButton, {
-                    [styles.rotated]: selectedMatchTitle === title
+            <div
+                className={classNames(styles.teamsWrapper, {
+                    [styles.hidden]: title !== selectedMatchTitle
                 })}
-                onClick={() => setSelectedMatchTitle(title)}
             >
-                <Icons.Expand />
-            </button>
+                <TeamCard {...homeTeam} />
+                <div className={styles.teamsDivider}>
+                    <hr />
+                    <span>vs</span>
+                    <hr />
+                </div>
+                <TeamCard {...awayTeam} />
+            </div>
         </div>
     )
 }

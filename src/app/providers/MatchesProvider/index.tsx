@@ -1,24 +1,32 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import React, {
+    createContext,
+    useContext,
+    useState,
+    useEffect,
+    ReactNode,
+    SetStateAction,
+    Dispatch
+} from 'react'
 import { IMatch } from '@/entities/Match/model/interfaces/match'
 import SocketService from '@/shared/services/SocketService'
 
-interface MatchesContextType {
+interface IMatchesContext {
     selectedMatchTitle: string | null
-    setSelectedMatchTitle: (selectedMatchTitle: string | null) => void
+    setSelectedMatchTitle: Dispatch<SetStateAction<string | null>>
     matches: IMatch[]
-    setMatches: (matches: IMatch[]) => void
+    setMatches: Dispatch<SetStateAction<IMatch[]>>
     filteredMatches: IMatch[]
-    setFilteredMatches: (matches: IMatch[]) => void
+    setFilteredMatches: Dispatch<SetStateAction<IMatch[]>>
     isLoading: boolean
-    setIsLoading: (loading: boolean) => void
+    setIsLoading: Dispatch<SetStateAction<boolean>>
     hasErrors: boolean
-    setHasErrors: (hasErrors: boolean) => void
+    setHasErrors: Dispatch<SetStateAction<boolean>>
     refreshMatches: () => void
 }
 
-const MatchesContext = createContext<MatchesContextType | undefined>(undefined)
+const MatchesContext = createContext<IMatchesContext | undefined>(undefined)
 
 export const useMatches = () => {
     const context = useContext(MatchesContext)

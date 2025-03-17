@@ -4,12 +4,11 @@ import styles from './styles.module.scss'
 import classNames from 'classnames'
 import { Icons } from '@/shared/UI/Icons'
 
-interface Props {
-    data: ITeam
+interface Props extends ITeam {
     isReversed?: boolean
 }
 
-const TeamItem = ({ data, isReversed = false }: Props) => {
+const TeamItem = ({ isReversed = false, ...data }: Props) => {
     return (
         <div className={classNames(styles.teamItem, { [styles.reversed]: isReversed })}>
             <Icons.Team />

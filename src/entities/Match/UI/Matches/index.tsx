@@ -32,7 +32,7 @@ const Matches = () => {
                 <div className={styles.list}>
                     {matches.length > 0 ? (
                         matches.map((item, index) => {
-                            return <MatchItem key={index} data={item} />
+                            return <MatchItem key={index} {...item} />
                         })
                     ) : isLoading ? (
                         <div className={styles.loaderWrapper}>

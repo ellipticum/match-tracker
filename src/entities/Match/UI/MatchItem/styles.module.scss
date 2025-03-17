@@ -1,27 +1,34 @@
 .matchItem {
+  background: var(--color-primary-10);
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 8px;
   border-radius: 4px;
+}
+
+.matchWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 8px;
-  background: var(--color-primary-10);
 
   @media (min-width: 576px) {
     flex-direction: row;
     justify-content: space-between;
     gap: 12px;
     padding: 16px;
+    width: 100%;
   }
 }
 
-.wrapper {
+.content {
   display: flex;
   flex: 1;
   gap: 25px;
 }
 
-.content {
+.info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,5 +49,46 @@
     @media (min-width: 576px) {
       font-size: 20px;
     }
+  }
+}
+
+.teamsWrapper {
+  transition: 300ms opacity ease-in-out, 300ms margin-top ease-in-out, 600ms max-height ease-in-out;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+
+  &.hidden {
+    pointer-events: none;
+    margin-top: 0;
+    opacity: 0;
+    max-height: 0;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+.teamsDivider {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.expandButton {
+  width: fit-content;
+  height: fit-content;
+
+  transition: 200ms rotate ease-in-out;
+
+  &.rotated {
+    rotate: 180deg;
   }
 }
