@@ -63,7 +63,13 @@ const MatchesProvider = ({ children }: Props) => {
         setIsLoading(true)
         setHasErrors(false)
 
-        SocketService.getInstance().reconnect()
+        try {
+            SocketService.getInstance().reconnect()
+        } catch (error) {
+            console.error('Failed to reconnect socket', error)
+            setHasErrors(true)
+            setIsLoading(false)
+        }
     }, [])
 
     const filterByStatus = useCallback((status: MatchStatus | null) => {
@@ -79,18 +85,29 @@ const MatchesProvider = ({ children }: Props) => {
             setHasErrors(false)
         }
 
-        const handleError = () => {
+        const handleError = (error?: Error) => {
+            console.error('Socket connection error', error)
             setHasErrors(true)
             setIsLoading(false)
         }
 
-        socketService.connect({
-            onMatches: handleMatches,
-            onError: handleError
-        })
+        try {
+            socketService.connect({
+                onMatches: handleMatches,
+                onError: handleError
+            })
+        } catch (error) {
+            console.error('Failed to connect socket', error)
+            setHasErrors(true)
+            setIsLoading(false)
+        }
 
         return () => {
-            socketService.disconnect()
+            try {
+                socketService.disconnect()
+            } catch (error) {
+                console.error('Failed to disconnect socket', error)
+            }
         }
     }, [])
 

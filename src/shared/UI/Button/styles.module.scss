@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  max-width: 400px;
+  width: min(400px, 100%);
   border-radius: 4px;
   padding: 15px 40px;
   transition: 200ms color ease-in-out, 200ms background ease-in-out;

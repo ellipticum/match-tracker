@@ -31,9 +31,9 @@ const TeamCard = ({ name, place, points, total_kills, players }: Props) => {
                 })}
             </div>
             <div className={styles.info}>
-                {info.map((item) => {
+                {info.map((item, index) => {
                     return (
-                        <div className={styles.infoItem}>
+                        <div key={index} className={styles.infoItem}>
                             <Pair {...item} />
                         </div>
                     )
