@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../../../shared/UI/Button'
-import { useMatches } from '../../../app/providers/MatchesProvider'
+import Button from '@/shared/UI/Button'
+import { useMatches } from '@/app/providers/MatchesProvider'
 
 const MatchesRefreshButton = () => {
     const { refreshMatches, isLoading } = useMatches()

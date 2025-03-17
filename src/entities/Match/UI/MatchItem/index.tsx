@@ -1,13 +1,13 @@
 import React from 'react'
-import { IMatch } from '../../model/interfaces/match'
+import { IMatch } from '@/entities/Match/model/interfaces/match'
 import styles from './styles.module.scss'
-import { Icons } from '../../../../shared/UI/Icons'
-import TeamItem from '../../../Team/UI/TeamItem'
-import StatusCard from '../StatusCard'
-import { useMatches } from '../../../../app/providers/MatchesProvider'
+import { Icons } from '@/shared/UI/Icons'
+import TeamItem from '@/entities/Team/UI/TeamItem'
+import StatusCard from '@/entities/Match/UI/StatusCard'
+import { useMatches } from '@/app/providers/MatchesProvider'
 import classNames from 'classnames'
-import TeamCard from '../../../Team/UI/TeamCard'
-import AnimatedCounter from '../../../../shared/UI/AnimatedCounter'
+import TeamCard from '@/entities/Team/UI/TeamCard'
+import AnimatedCounter from '@/shared/UI/AnimatedCounter'
 
 interface Props extends IMatch {}
 

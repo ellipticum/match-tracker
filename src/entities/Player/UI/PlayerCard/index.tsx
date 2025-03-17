@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
-import { IPlayer } from '../../model/interfaces/player'
+import { IPlayer } from '@/entities/Player/model/interfaces/player'
 import styles from './styles.module.scss'
-import Pair from '../../../../shared/UI/Pair'
+import Pair from '@/shared/UI/Pair'
 
 interface Props extends IPlayer {}
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import { ITeam } from '../../model/interfaces/team'
+import { ITeam } from '@/entities/Team/model/interfaces/team'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
-import { Icons } from '../../../../shared/UI/Icons'
+import { Icons } from '@/shared/UI/Icons'
 
 interface Props extends ITeam {
     isReversed?: boolean

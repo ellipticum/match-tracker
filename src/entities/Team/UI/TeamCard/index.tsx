@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { ITeam } from '../../model/interfaces/team'
-import { IPlayer } from '../../../Player/model/interfaces/player'
-import PlayerCard from '../../../Player/UI/PlayerCard'
-import Pair from '../../../../shared/UI/Pair'
+import { ITeam } from '@/entities/Team/model/interfaces/team'
+import { IPlayer } from '@/entities/Player/model/interfaces/player'
+import PlayerCard from '@/entities/Player/UI/PlayerCard'
+import Pair from '@/shared/UI/Pair'
 
 interface Props extends ITeam {}
 

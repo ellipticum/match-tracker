@@ -11,9 +11,9 @@ import React, {
     useMemo,
     useCallback
 } from 'react'
-import { IMatch } from '../../../entities/Match/model/interfaces/match'
-import SocketService from '../../../shared/services/SocketService'
-import { MatchStatus } from '../../../entities/Match/model/enums/matchStatus'
+import { IMatch } from '@/entities/Match/model/interfaces/match'
+import SocketService from '@/shared/services/SocketService'
+import { MatchStatus } from '@/entities/Match/model/enums/matchStatus'
 
 interface IMatchesContext {
     selectedMatchTitle: string | null

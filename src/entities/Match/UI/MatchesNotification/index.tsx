@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { Icons } from '../../../../shared/UI/Icons'
+import { Icons } from '@/shared/UI/Icons'
 import classNames from 'classnames'
 
 interface Props {

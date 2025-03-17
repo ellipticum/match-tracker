@@ -1,4 +1,4 @@
-import { statusMap } from './statusMap'
+import { statusMap } from '@/entities/Match/model/data/statusMap'
 
 export const options = [
     { name: 'Все матчи', value: null },

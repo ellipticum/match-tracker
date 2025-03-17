@@ -1,4 +1,4 @@
-import { MatchStatus } from '../enums/matchStatus'
+import { MatchStatus } from '@/entities/Match/model/enums/matchStatus'
 
 export const statusMap: Record<MatchStatus, string> = {
     [MatchStatus.Ongoing]: 'Live',

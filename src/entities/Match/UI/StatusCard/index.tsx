@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { ILayoutProps } from '../../../../shared/interfaces/layoutProps'
+import { ILayoutProps } from '@/shared/interfaces/layoutProps'
 import classNames from 'classnames'
-import { MatchStatus } from '../../model/enums/matchStatus'
-import { statusMap } from '../../model/data/statusMap'
+import { MatchStatus } from '@/entities/Match/model/enums/matchStatus'
+import { statusMap } from '@/entities/Match/model/data/statusMap'
 
 interface Props {
     status: MatchStatus

@@ -2,16 +2,16 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import MatchItem from '../MatchItem'
-import Logo from '../../../../shared/UI/Logo'
-import Container from '../../../../shared/UI/Container'
-import Loader from '../../../../shared/UI/Loader'
-import Select from '../../../../shared/UI/Select'
-import { MatchStatus } from '../../model/enums/matchStatus'
-import MatchesNotification from '../MatchesNotification'
-import MatchesRefreshButton from '../../../../features/MatchesRefreshButton/UI'
-import { useMatches } from '../../../../app/providers/MatchesProvider'
-import { options } from '../../model/data/options'
+import MatchItem from '@/entities/Match/UI/MatchItem'
+import Logo from '@/shared/UI/Logo'
+import Container from '@/shared/UI/Container'
+import Loader from '@/shared/UI/Loader'
+import Select from '@/shared/UI/Select'
+import { MatchStatus } from '@/entities/Match/model/enums/matchStatus'
+import MatchesNotification from '@/entities/Match/UI/MatchesNotification'
+import MatchesRefreshButton from '@/features/MatchesRefreshButton/UI'
+import { useMatches } from '@/app/providers/MatchesProvider'
+import { options } from '@/entities/Match/model/data/options'
 
 const Matches = () => {
     const { currentStatus, hasErrors, isLoading, filteredMatches, filterByStatus } = useMatches()

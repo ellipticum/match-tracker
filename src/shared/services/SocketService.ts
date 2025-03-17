@@ -1,4 +1,4 @@
-import { IMatch } from '../../entities/Match/model/interfaces/match'
+import { IMatch } from '@/entities/Match/model/interfaces/match'
 
 interface SocketMessage {
     type: string

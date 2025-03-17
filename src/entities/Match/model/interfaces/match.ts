@@ -1,5 +1,5 @@
-import { ITeam } from '../../../Team/model/interfaces/team'
-import { MatchStatus } from '../enums/matchStatus'
+import { ITeam } from '@/entities/Team/model/interfaces/team'
+import { MatchStatus } from '@/entities/Match/model/enums/matchStatus'
 
 export interface IMatch {
     title: string

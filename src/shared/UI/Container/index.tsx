@@ -1,5 +1,5 @@
 import React from 'react'
-import { ILayoutProps } from '../../interfaces/layoutProps'
+import { ILayoutProps } from '@/shared/interfaces/layoutProps'
 import styles from './styles.module.scss'
 
 interface Props extends ILayoutProps {}

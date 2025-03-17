@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { IButtonProps } from '../../interfaces/buttonProps'
+import { IButtonProps } from '@/shared/interfaces/buttonProps'
 import classNames from 'classnames'
 import { Icons } from '../Icons'
 

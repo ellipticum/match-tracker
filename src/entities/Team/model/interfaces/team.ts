@@ -1,4 +1,4 @@
-import { IPlayer } from '../../../Player/model/interfaces/player'
+import { IPlayer } from '@/entities/Player/model/interfaces/player'
 
 export interface ITeam {
     name: string

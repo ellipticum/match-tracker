@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { ILayoutProps } from '../../interfaces/layoutProps'
-import MatchesProvider from '../../../app/providers/MatchesProvider'
+import { ILayoutProps } from '@/shared/interfaces/layoutProps'
+import MatchesProvider from '@/app/providers/MatchesProvider'
 
 interface Props extends ILayoutProps {}
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import AnimatedCounter from '../AnimatedCounter'
+import AnimatedCounter from '@/shared/UI/AnimatedCounter'
 
 interface Props {
     name: string
