@@ -1,11 +1,29 @@
 .teamItem {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 6px;
+
+  & svg {
+    width: 28px;
+    height: 28px;
+
+    @media (min-width: 576px) {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  @media (min-width: 576px) {
+    gap: 14px;
+  }
 }
 
 .teamName {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 100%;
+
+  @media (min-width: 576px) {
+    font-size: 16px;
+  }
 }

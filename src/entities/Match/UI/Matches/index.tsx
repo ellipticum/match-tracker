@@ -11,25 +11,13 @@ import { set } from 'immutable'
 import MatchesNotification from '@/entities/Match/UI/MatchesNotification'
 import Logo from '@/shared/UI/Logo'
 import Container from '@/shared/UI/Container'
+import EmptyLoader from 'next/dist/build/webpack/loaders/empty-loader'
+import Loader from '@/shared/UI/Loader'
 
-interface Props {
-    initialHasErrors: boolean
-    initialMatches: IMatch[]
-}
+interface Props {}
 
-const Matches = ({ initialMatches, initialHasErrors }: Props) => {
-    const { matches, setMatches, hasErrors, setHasErrors } = useMatches()
-
-    useEffect(() => {
-        if (matches.length > 0) {
-            return
-        }
-
-        setMatches(initialMatches)
-        setHasErrors(initialHasErrors)
-    }, [])
-
-    const array = matches.length === 0 ? initialMatches : matches
+const Matches = () => {
+    const { matches, hasErrors, isLoading } = useMatches()
 
     return (
         <Container>
@@ -42,10 +30,14 @@ const Matches = ({ initialMatches, initialHasErrors }: Props) => {
                     </div>
                 </div>
                 <div className={styles.list}>
-                    {array.length > 0 ? (
-                        array.map((item, index) => {
+                    {matches.length > 0 ? (
+                        matches.map((item, index) => {
                             return <MatchItem key={index} data={item} />
                         })
+                    ) : isLoading ? (
+                        <div className={styles.loaderWrapper}>
+                            <Loader />
+                        </div>
                     ) : (
                         <div className={styles.notFound}>Ничего не найдено!</div>
                     )}

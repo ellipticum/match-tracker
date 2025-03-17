@@ -1,40 +1,87 @@
 'use client'
 
-import React, { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { IMatch } from '@/entities/Match/model/interfaces/match'
-import { ILayoutProps } from '@/shared/interfaces/layoutProps'
+import SocketService from '@/shared/services/SocketService'
 
-interface IMatchesContext {
-    isLoading: boolean
-    setIsLoading: Dispatch<SetStateAction<boolean>>
-    hasErrors: boolean
-    setHasErrors: Dispatch<SetStateAction<boolean>>
+interface MatchesContextType {
+    selectedMatchTitle: string | null
+    setSelectedMatchTitle: (selectedMatchTitle: string | null) => void
     matches: IMatch[]
-    setMatches: Dispatch<SetStateAction<IMatch[]>>
+    setMatches: (matches: IMatch[]) => void
+    filteredMatches: IMatch[]
+    setFilteredMatches: (matches: IMatch[]) => void
+    isLoading: boolean
+    setIsLoading: (loading: boolean) => void
+    hasErrors: boolean
+    setHasErrors: (hasErrors: boolean) => void
+    refreshMatches: () => void
 }
 
-const MatchesContext = createContext<IMatchesContext | null>(null)
+const MatchesContext = createContext<MatchesContextType | undefined>(undefined)
 
 export const useMatches = () => {
-    const value = useContext(MatchesContext)
+    const context = useContext(MatchesContext)
 
-    if (!value) {
-        throw new Error(`${MatchesContext.displayName} должен использоваться внутри провайдера`)
+    if (context === undefined) {
+        throw new Error()
     }
 
-    return value
+    return context
 }
 
-interface Props extends ILayoutProps {}
+interface MatchesProviderProps {
+    children: ReactNode
+}
 
-const MatchesProvider = ({ children }: Props) => {
+const MatchesProvider: React.FC<MatchesProviderProps> = ({ children }) => {
     const [matches, setMatches] = useState<IMatch[]>([])
-    const [hasErrors, setHasErrors] = useState<boolean>(false)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [selectedMatchTitle, setSelectedMatchTitle] = useState<string | null>(null)
+    const [filteredMatches, setFilteredMatches] = useState<IMatch[]>([])
+    const [isLoading, setIsLoading] = useState(true)
+    const [hasErrors, setHasErrors] = useState(false)
+
+    useEffect(() => {
+        const socketService = SocketService.getInstance()
+
+        socketService.connect({
+            onMatches: (newMatches) => {
+                setMatches(newMatches)
+                setIsLoading(false)
+                setHasErrors(false)
+            },
+            onError: () => {
+                setHasErrors(true)
+                setIsLoading(false)
+            }
+        })
+
+        return () => {
+            socketService.disconnect()
+        }
+    }, [])
+
+    const refreshMatches = () => {
+        setIsLoading(true)
+        const socketService = SocketService.getInstance()
+        socketService.reconnect()
+    }
 
     return (
         <MatchesContext.Provider
-            value={{ hasErrors, setHasErrors, matches, setMatches, isLoading, setIsLoading }}
+            value={{
+                selectedMatchTitle,
+                setSelectedMatchTitle,
+                matches,
+                setMatches,
+                filteredMatches,
+                setFilteredMatches,
+                isLoading,
+                setIsLoading,
+                hasErrors,
+                setHasErrors,
+                refreshMatches
+            }}
         >
             {children}
         </MatchesContext.Provider>

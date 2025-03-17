@@ -1,17 +1,14 @@
+'use client'
+
 import React from 'react'
 import Wrapper from '@/shared/UI/Wrapper'
 import Matches from '../../entities/Match/UI/Matches'
-import { fetchMatches } from '@/entities/Match/api/fetchMatches'
+import { useMatches } from '@/app/providers/MatchesProvider'
 
-const Home = async () => {
-    const response = await fetchMatches()
-
-    const matches = response ? response.data.matches : []
-    const hasErrors = !response
-
+const Home = () => {
     return (
         <Wrapper>
-            <Matches initialMatches={matches} initialHasErrors={hasErrors} />
+            <Matches />
         </Wrapper>
     )
 }

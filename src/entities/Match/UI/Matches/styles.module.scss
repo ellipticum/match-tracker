@@ -28,6 +28,14 @@
   }
 }
 
+.loaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding-top: 50px;
+}
+
 .list {
   display: flex;
   flex-direction: column;
