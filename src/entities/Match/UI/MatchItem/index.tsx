@@ -7,6 +7,7 @@ import StatusCard from '@/entities/Match/UI/StatusCard'
 import { useMatches } from '@/app/providers/MatchesProvider'
 import classNames from 'classnames'
 import TeamCard from '@/entities/Team/UI/TeamCard'
+import AnimatedCounter from '@/shared/UI/AnimatedCounter'
 
 interface Props extends IMatch {}
 
@@ -21,7 +22,8 @@ const MatchItem = ({ title, homeTeam, status, awayTeam, homeScore, awayScore }: 
                     <div className={styles.info}>
                         <div className={styles.score}>
                             <span>
-                                {homeScore} : {awayScore}
+                                <AnimatedCounter value={homeScore} /> :{' '}
+                                <AnimatedCounter value={awayScore} />
                             </span>
                         </div>
                         <StatusCard status={status} />

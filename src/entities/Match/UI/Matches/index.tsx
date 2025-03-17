@@ -1,38 +1,42 @@
 'use client'
 
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import MatchItem from '@/entities/Match/UI/MatchItem'
-import Image from 'next/image'
-import { IMatch } from '@/entities/Match/model/interfaces/match'
-import MatchesRefreshButton from '@/features/MatchesRefreshButton/UI'
-import { useMatches } from '@/app/providers/MatchesProvider'
-import { set } from 'immutable'
-import MatchesNotification from '@/entities/Match/UI/MatchesNotification'
 import Logo from '@/shared/UI/Logo'
 import Container from '@/shared/UI/Container'
-import EmptyLoader from 'next/dist/build/webpack/loaders/empty-loader'
 import Loader from '@/shared/UI/Loader'
-
-interface Props {}
+import Select from '@/shared/UI/Select'
+import { MatchStatus } from '@/entities/Match/model/enums/matchStatus'
+import MatchesNotification from '@/entities/Match/UI/MatchesNotification'
+import MatchesRefreshButton from '@/features/MatchesRefreshButton/UI'
+import { useMatches } from '@/app/providers/MatchesProvider'
+import { options } from '@/entities/Match/model/data/options'
 
 const Matches = () => {
-    const { matches, hasErrors, isLoading } = useMatches()
+    const { currentStatus, hasErrors, isLoading, filteredMatches, filterByStatus } = useMatches()
+
+    const onSelect = (status: MatchStatus | null) => {
+        filterByStatus(status)
+    }
 
     return (
         <Container>
             <div className={styles.matches}>
                 <div className={styles.matchesHeader}>
-                    <Logo />
+                    <div className={styles.part}>
+                        <Logo />
+                        <Select value={currentStatus} options={options} onSelect={onSelect} />
+                    </div>
                     <div className={styles.interactive}>
                         <MatchesNotification isHidden={!hasErrors} />
                         <MatchesRefreshButton />
                     </div>
                 </div>
                 <div className={styles.list}>
-                    {matches.length > 0 ? (
-                        matches.map((item, index) => {
-                            return <MatchItem key={index} {...item} />
+                    {filteredMatches.length > 0 ? (
+                        filteredMatches.map((item, index) => {
+                            return <MatchItem key={item.time} {...item} />
                         })
                     ) : isLoading ? (
                         <div className={styles.loaderWrapper}>

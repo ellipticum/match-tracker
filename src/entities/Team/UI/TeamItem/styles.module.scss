@@ -16,12 +16,20 @@
   @media (min-width: 576px) {
     gap: 14px;
   }
+
+  &.reversed {
+    flex-direction: row-reverse;
+  }
 }
 
 .teamName {
   font-size: 14px;
   font-weight: 600;
   line-height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
 
   @media (min-width: 576px) {
     font-size: 16px;

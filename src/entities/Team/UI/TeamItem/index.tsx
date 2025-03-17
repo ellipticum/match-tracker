@@ -12,7 +12,7 @@ const TeamItem = ({ isReversed = false, ...data }: Props) => {
     return (
         <div className={classNames(styles.teamItem, { [styles.reversed]: isReversed })}>
             <Icons.Team />
-            <span>{data.name}</span>
+            <span className={styles.teamName}>{data.name}</span>
         </div>
     )
 }

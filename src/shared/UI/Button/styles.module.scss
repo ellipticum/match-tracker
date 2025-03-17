@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
   gap: 10px;
+  max-width: 400px;
   border-radius: 4px;
   padding: 15px 40px;
   transition: 200ms color ease-in-out, 200ms background ease-in-out;
@@ -22,5 +22,9 @@
   &:disabled {
     color: var(--color-secondary-10);
     background: var(--color-accent-15);
+  }
+
+  @media (min-width: 992px) {
+    width: fit-content;
   }
 }
