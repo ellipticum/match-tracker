@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IMatch } from '@/entities/Match/model/interfaces/match'
 import styles from './styles.module.scss'
 import { Icons } from '@/shared/UI/Icons'
@@ -13,6 +13,10 @@ interface Props extends IMatch {}
 
 const MatchItem = ({ title, homeTeam, status, awayTeam, homeScore, awayScore }: Props) => {
     const { selectedMatchTitle, setSelectedMatchTitle } = useMatches()
+
+    useEffect(() => {
+        console.log('render (MatchItem)')
+    })
 
     return (
         <div className={styles.matchItem}>

@@ -7,7 +7,7 @@ interface Props {
 
 const easeOut = (t: number): number => 1 - Math.pow(1 - t, 3)
 
-const AnimatedCounter = ({ value, duration = 800 }: Props) => {
+const AnimatedCounter = ({ value, duration = 1000 }: Props) => {
     const [displayValue, setDisplayValue] = useState<number>(value)
     const previousValue = useRef<number>(value)
     const animationFrameId = useRef<number | null>(null)

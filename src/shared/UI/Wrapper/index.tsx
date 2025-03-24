@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect } from 'react'
 import styles from './styles.module.scss'
 import { ILayoutProps } from '@/shared/interfaces/layoutProps'
 import MatchesProvider from '@/app/providers/MatchesProvider'

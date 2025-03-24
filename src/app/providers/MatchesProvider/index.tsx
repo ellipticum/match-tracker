@@ -50,6 +50,7 @@ const MatchesProvider = ({ children }: Props) => {
     const [isLoading, setIsLoading] = useState(true)
     const [hasErrors, setHasErrors] = useState(false)
     const [currentStatus, setCurrentStatus] = useState<MatchStatus | null>(null)
+    const [state, setState] = useState<number>(0)
 
     const filteredMatches = useMemo(() => {
         if (currentStatus === null) {
@@ -111,26 +112,37 @@ const MatchesProvider = ({ children }: Props) => {
         }
     }, [])
 
-    return (
-        <MatchesContext.Provider
-            value={{
-                selectedMatchTitle,
-                setSelectedMatchTitle,
-                matches,
-                setMatches,
-                filteredMatches,
-                isLoading,
-                setIsLoading,
-                hasErrors,
-                setHasErrors,
-                refreshMatches,
-                filterByStatus,
-                currentStatus
-            }}
-        >
-            {children}
-        </MatchesContext.Provider>
-    )
+    const value = useMemo(() => {
+        return {
+            selectedMatchTitle,
+            setSelectedMatchTitle,
+            matches,
+            setMatches,
+            filteredMatches,
+            isLoading,
+            setIsLoading,
+            hasErrors,
+            setHasErrors,
+            refreshMatches,
+            filterByStatus,
+            currentStatus
+        }
+    }, [
+        selectedMatchTitle,
+        setSelectedMatchTitle,
+        matches,
+        setMatches,
+        filteredMatches,
+        isLoading,
+        setIsLoading,
+        hasErrors,
+        setHasErrors,
+        refreshMatches,
+        filterByStatus,
+        currentStatus
+    ])
+
+    return <MatchesContext.Provider value={value}>{children}</MatchesContext.Provider>
 }
 
 export default MatchesProvider

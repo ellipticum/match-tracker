@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import MatchItem from '@/entities/Match/UI/MatchItem'
 import Logo from '@/shared/UI/Logo'
@@ -15,6 +15,10 @@ import { options } from '@/entities/Match/model/data/options'
 
 const Matches = () => {
     const { currentStatus, hasErrors, isLoading, filteredMatches, filterByStatus } = useMatches()
+
+    useEffect(() => {
+        console.log('render (Matches)')
+    })
 
     const onSelect = (status: MatchStatus | null) => {
         filterByStatus(status)
